@@ -22,6 +22,7 @@ public class TestCase
 			this.setUp();
 			Method func = this.getClass().getMethod(this.name);
 			func.invoke(this,new Object[0]);
+			this.tearDown();
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -29,5 +30,9 @@ public class TestCase
 	}
 	public void setUp()
 	{
+	}
+	public void tearDown()
+	{
+		
 	}
 }

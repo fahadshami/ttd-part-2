@@ -3,8 +3,7 @@ package com.tddpart2;
 public class WasRun extends TestCase
 {
 	boolean wasRun;
-	boolean wasSetUp;
-	
+	String log;
 	public WasRun(String name)
 	{
 		 super(name);
@@ -13,11 +12,16 @@ public class WasRun extends TestCase
 	public void testMethod()
 	{
 		this.wasRun= true;
+		this.log += " testMethod";
 	}
 	public void setUp()
 	{
-		this.wasRun= false;
-		this.wasSetUp= true;
+		this.log="setUp";
+	}
+	public void tearDown()
+	{
+		this.wasRun= true;
+		this.log += " tearDown";
 	}
 }
 

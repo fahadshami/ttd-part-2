@@ -7,43 +7,47 @@ import org.junit.Test;
 
 public class TestCaseTest extends TestCase 
 {
-	WasRun test; 
-	@Before
-	public void setUp()
-	{
-		this.test= new WasRun("testMethod");
-	}
+	WasRun test;
+	
 	@Test
-	public void testWasRun()
-	{
-		System.out.println(test.wasRun);
-		assertEquals(false,test.wasRun);
-		test.testMethod();
-		System.out.println(test.wasRun);
-		assertEquals(true,test.wasRun);
-
-	}
-	@Test
-	public void testForMethodRun()
-	{
-		System.out.println(test.wasRun);
-		assertEquals(false,test.wasRun);
+	public void testTemplateMethod(){
+		WasRun test= new WasRun("testMethod");
 		test.run();
-		System.out.println(test.wasRun);
-		assertEquals(true,test.wasRun);
-
+		assertEquals("setUp testMethod tearDown",test.log);
 	}
-	@Test
-	public void testRunning() 
-	{
-		this.test.run();
-		System.out.println(this.test.wasRun);
-		assertEquals(true,test.wasRun);
-	}
-	@Test
-	public void testSetUp(){
-		this.test.run();
-		assertEquals(true,test.wasSetUp);
-	}
+	
+//	@Before
+//	public void setUp()
+//	{
+//		this.test= new WasRun("testMethod");
+//	}
+//	@Test
+//	public void testWasRun()
+//	{
+//		System.out.println(test.wasRun);
+//		assertEquals(false,test.wasRun);
+//		test.testMethod();
+//		System.out.println(test.wasRun);
+//		assertEquals(true,test.wasRun);
+//
+//	}
+//	@Test
+//	public void testForMethodRun()
+//	{
+//		System.out.println(test.wasRun);
+//		assertEquals(false,test.wasRun);
+//		test.run();
+//		System.out.println(test.wasRun);
+//		assertEquals(true,test.wasRun);
+//
+//	}
+//	@Test
+//	public void testRunning() 
+//	{
+//		this.test.run();
+//		System.out.println(this.test.wasRun);
+//		assertEquals(true,test.wasRun);
+//	}
+	
 }
 
