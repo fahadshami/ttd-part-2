@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class TestCaseTest extends TestCase 
 {
-	WasRun test;
+	WasRun test; 
 	@Before
 	public void setUp()
 	{
