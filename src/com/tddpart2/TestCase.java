@@ -10,7 +10,6 @@ public class TestCase
 	{
 		
 	}
-	
 	public TestCase(String name)
 	{
 		this.name = name;
@@ -20,11 +19,15 @@ public class TestCase
 	{
 		try 
 		{
+			this.setUp();
 			Method func = this.getClass().getMethod(this.name);
 			func.invoke(this,new Object[0]);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	public void setUp()
+	{
 	}
 }

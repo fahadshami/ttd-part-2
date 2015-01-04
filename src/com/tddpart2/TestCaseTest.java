@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TestCaseTest extends TestCase 
 {
-
+	WasRun test;
 	@Test
 	public void testWasRun()
 	{
@@ -29,15 +29,23 @@ public class TestCaseTest extends TestCase
 		assertEquals(true,test.wasRun);
 
 	}
-	
+	public void setUp()
+	{
+		this.test= new WasRun("testMethod");
+	}
 	@Test
 	public void testRunning() 
 	{
-		WasRun test= new WasRun("testMethod");
-		assertEquals(false,test.wasRun);
-		test.run();
+		setUp();//should be called polymorphically
+		this.test.run();
+		System.out.println(this.test.wasRun);
 		assertEquals(true,test.wasRun);
 	}
-	
+	@Test
+	public void testSetUp(){
+		setUp();
+		this.test.run();
+		assertEquals(true,test.wasSetUp);
+	}
 }
 
