@@ -2,20 +2,23 @@ package com.tddpart2;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+//import org.junit.Before;
 import org.junit.Test;
 
 public class TestCaseTest extends TestCase 
 {
-	WasRun test;
+//	WasRun test;
 	
 	@Test
-	public void testTemplateMethod(){
-		WasRun test= new WasRun("testMethod");
-		test.run();
-		assertEquals("setUp testMethod tearDown",test.log);
+	public void testFailedResult()
+	{
+		WasRun test= new WasRun("testBrokenMethod");
+		TestResult result= test.run();
+		System.out.println(result.summary());
+		//providing 0 failed to verify the test pass
+		assertEquals("1 run, 0 failed", result.summary());
 	}
-	
+		
 //	@Before
 //	public void setUp()
 //	{

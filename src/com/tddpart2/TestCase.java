@@ -15,10 +15,12 @@ public class TestCase
 		this.name = name;
 	}
 
-	public void run()
+	public TestResult run()
 	{
+		TestResult result = new TestResult();
 		try 
 		{
+			result.testStarted();
 			this.setUp();
 			Method func = this.getClass().getMethod(this.name);
 			func.invoke(this,new Object[0]);
@@ -27,6 +29,7 @@ public class TestCase
 		{
 			e.printStackTrace();
 		}
+		return result;
 	}
 	public void setUp()
 	{
