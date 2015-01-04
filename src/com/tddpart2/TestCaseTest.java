@@ -4,24 +4,40 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestCaseTest extends TestCase {
+public class TestCaseTest extends TestCase 
+{
 
-//	public TestCaseTest(String name) {
-//		super(name);
-//		// TODO Auto-generated constructor stub
-//	}
 	@Test
-	public void testWasRun(){
+	public void testWasRun()
+	{
 		WasRun test = new WasRun("testMethod");
-		test.run();
-		
+		System.out.println(test.wasRun);
+		assertEquals(false,test.wasRun);
+		test.testMethod();
+		System.out.println(test.wasRun);
+		assertEquals(true,test.wasRun);
+
 	}
 	@Test
-	public void testRunning() {
-		WasRun test= new WasRun("testMethod");
-		assertTrue(!test.wasRun);
+	public void testForMethodRun()
+	{
+		WasRun test = new WasRun("testMethod");
+		System.out.println(test.wasRun);
+		assertEquals(false,test.wasRun);
 		test.run();
-		assertFalse(test.wasRun);
-	}
+		System.out.println(test.wasRun);
+		assertEquals(true,test.wasRun);
 
+	}
+	
+	@Test
+	public void testRunning() 
+	{
+		WasRun test= new WasRun("testMethod");
+		assertEquals(false,test.wasRun);
+		test.run();
+		assertEquals(true,test.wasRun);
+	}
+	
 }
+
