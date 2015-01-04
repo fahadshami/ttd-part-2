@@ -10,15 +10,22 @@ public class TestCaseTest extends TestCase
 //	WasRun test;
 	
 	@Test
-	public void testFailedResult()
+	public void testFailedResultFormatting()
 	{
-		WasRun test= new WasRun("testBrokenMethod");
-		TestResult result= test.run();
-		System.out.println(result.summary());
-		//providing 0 failed to verify the test pass
-		assertEquals("1 run, 0 failed", result.summary());
+		TestResult result= new TestResult();
+		result.testStarted();
+		result.testFailed();
+		assertEquals("1 run, 1 failed", result.summary());
 	}
-		
+//	@Test
+//	public void testFailedResult()
+//	{
+//		WasRun test= new WasRun("testBrokenMethod");
+//		TestResult result= test.run();
+//		System.out.println(result.summary());
+//		//providing 0 failed to verify the test pass
+//		assertEquals("1 run, 0 failed", result.summary());
+//	}
 //	@Before
 //	public void setUp()
 //	{

@@ -18,15 +18,17 @@ public class TestCase
 	public TestResult run()
 	{
 		TestResult result = new TestResult();
+		result.testStarted();
+		this.setUp();
 		try 
 		{
-			result.testStarted();
-			this.setUp();
+			
 			Method func = this.getClass().getMethod(this.name);
 			func.invoke(this,new Object[0]);
 			this.tearDown();
 		} catch (Exception e)
 		{
+			result.testFailed();
 			e.printStackTrace();
 		}
 		return result;
