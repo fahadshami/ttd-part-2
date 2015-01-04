@@ -11,7 +11,7 @@ public class TestResult
 		errorCount = 0;
 	}
 	public void testStarted()
-	{
+	{ 
 		this.runCount += 1;
 	}
 	public int testFailed()

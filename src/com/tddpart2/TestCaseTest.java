@@ -2,62 +2,23 @@ package com.tddpart2;
 
 import static org.junit.Assert.*;
 
-//import org.junit.Before;
 import org.junit.Test;
 
 public class TestCaseTest extends TestCase 
 {
-//	WasRun test;
-	
 	@Test
-	public void testFailedResultFormatting()
+	public void testSuite()
 	{
+		com.tddpart2.TestSuite suite = new com.tddpart2.TestSuite();
+		suite.add(new TestCase("testTemplateMethod"));
+		suite.add(new TestCase("testResult"));
+		suite.add(new TestCase("testFailedResultFormatting"));
+		suite.add(new TestCase("testFailedResult"));
+		suite.add(new TestCase("testSuite"));
 		TestResult result= new TestResult();
-		result.testStarted();
-		result.testFailed();
-		assertEquals("1 run, 1 failed", result.summary());
+		suite.run(result);
+		System.out.println(result.summary());
+		assertEquals("5 run, 2 failed", result.summary());
 	}
-//	@Test
-//	public void testFailedResult()
-//	{
-//		WasRun test= new WasRun("testBrokenMethod");
-//		TestResult result= test.run();
-//		System.out.println(result.summary());
-//		//providing 0 failed to verify the test pass
-//		assertEquals("1 run, 0 failed", result.summary());
-//	}
-//	@Before
-//	public void setUp()
-//	{
-//		this.test= new WasRun("testMethod");
-//	}
-//	@Test
-//	public void testWasRun()
-//	{
-//		System.out.println(test.wasRun);
-//		assertEquals(false,test.wasRun);
-//		test.testMethod();
-//		System.out.println(test.wasRun);
-//		assertEquals(true,test.wasRun);
-//
-//	}
-//	@Test
-//	public void testForMethodRun()
-//	{
-//		System.out.println(test.wasRun);
-//		assertEquals(false,test.wasRun);
-//		test.run();
-//		System.out.println(test.wasRun);
-//		assertEquals(true,test.wasRun);
-//
-//	}
-//	@Test
-//	public void testRunning() 
-//	{
-//		this.test.run();
-//		System.out.println(this.test.wasRun);
-//		assertEquals(true,test.wasRun);
-//	}
-	
+		
 }
-

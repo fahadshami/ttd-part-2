@@ -1,11 +1,13 @@
 package com.tddpart2;
 
+import static org.junit.Assert.assertEquals;
+
 import java.lang.reflect.Method;
 
 public class TestCase 
 {
 	String name;
-	//Need a default constructor for the JUnit
+	TestResult result;
 	public TestCase()
 	{
 		
@@ -15,29 +17,52 @@ public class TestCase
 		this.name = name;
 	}
 
-	public TestResult run()
+	public void run(TestResult result)
 	{
-		TestResult result = new TestResult();
 		result.testStarted();
 		this.setUp();
 		try 
 		{
-			
 			Method func = this.getClass().getMethod(this.name);
 			func.invoke(this,new Object[0]);
-			this.tearDown();
 		} catch (Exception e)
 		{
 			result.testFailed();
 			e.printStackTrace();
 		}
-		return result;
+		this.tearDown();
 	}
 	public void setUp()
 	{
+		this.result= new TestResult();
 	}
 	public void tearDown()
 	{
 		
+	}
+	public void testTemplateMethod()
+	{
+		WasRun test= new WasRun("testMethod");
+		test.run(this.result);
+		assertEquals("setUp testMethod tearDown ",test.log);
+	}
+		
+	public void testResult()
+	{
+		WasRun test= new WasRun("testMethod");
+		test.run(result);
+		assertEquals("1 run, 0 failed",result.summary());
+	}
+	public void testFailedResult()
+	{	
+		WasRun test= new WasRun("testBrokenMethod");
+		test.run(result);
+		assertEquals("1 run, 1 failed",result.summary());
+	}
+	public void testFailedResultFormatting()
+	{	
+		result.testStarted();
+		result.testFailed();
+		assertEquals("1 run, 1 failed",result.summary());
 	}
 }
